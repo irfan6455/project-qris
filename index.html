@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kopi Lokal Premium - Pembayaran QRIS & DANA</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- CONTAINER UTAMA -->
+    <main class="container">
+        
+        <!-- CARD PRODUK -->
+        <div class="product-card">
+            <!-- Gambar Produk -->
+            <div class="product-image">
+                <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=600&q=80" alt="Kopi Espresso Premium">
+            </div>
+
+            <!-- Detail Produk -->
+            <div class="product-details">
+                <span class="badge">Terlaris</span>
+                <h1 class="product-title">Kopi Biji Arabika Premium 250g</h1>
+                <p class="product-description">
+                    Dipetik dari perkebunan lokal berkualitas tinggi. Memiliki cita rasa cokelat dan rempah alami yang khas. Cocok untuk menyegarkan harimu!
+                </p>
+                <div class="product-price">
+                    <span class="currency">Rp</span>
+                    <span class="price">45.000</span>
+                </div>
+
+                <!-- Tombol Beli / Checkout -->
+                <button id="btnBuy" class="btn btn-primary">Beli Sekarang</button>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- MODAL PEMBAYARAN (Sembunyi secara default) -->
+    <div id="paymentModal" class="modal">
+        <div class="modal-content">
+            <!-- Tombol Tutup Modal -->
+            <span id="btnClose" class="close-button">&times;</span>
+            
+            <h2>Pilih Metode Pembayaran</h2>
+            <p class="sub-text">Total Pembayaran: <strong>Rp 45.000</strong></p>
+
+            <!-- Pilihan Metode Pembayaran -->
+            <div class="payment-options">
+                <button class="payment-btn active" data-method="qris">
+                    QRIS (All Payment)
+                </button>
+                <button class="payment-btn" data-method="dana">
+                    DANA / E-Wallet
+                </button>
+            </div>
+
+            <!-- TAMPILAN 1: QRIS -->
+            <div id="sectionQris" class="payment-section">
+                <p>Scan QR Code di bawah menggunakan aplikasi pembayaran favorit Anda (DANA, GoPay, OVO, ShopeePay, Mobile Banking):</p>
+                <div class="qr-container">
+                    <!-- Contoh QR Code Dummy -->
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=PEMBAYARAN_KOPI_45000" alt="QRIS Code">
+                </div>
+                <p class="timer-text">Berlaku dalam: <span id="countdown">05:00</span></p>
+            </div>
+
+            <!-- TAMPILAN 2: DANA DEEP LINK -->
+            <div id="sectionDana" class="payment-section hidden">
+                <p>Klik tombol di bawah untuk membuka aplikasi DANA atau transfer langsung ke nomor berikut:</p>
+                <div class="dana-info">
+                    <p class="account-label">Nomor Akun DANA Tujuan:</p>
+                    <div class="copy-box">
+                        <span id="danaNumber">0812-3456-7890</span>
+                        <button id="btnCopy" class="btn-small">Salin</button>
+                    </div>
+                </div>
+                <a href="https://dana.id" target="_blank" class="btn btn-dana">Buka Aplikasi DANA</a>
+            </div>
+
+            <!-- Action Status -->
+            <button id="btnConfirm" class="btn btn-success">Saya Sudah Bayar</button>
+        </div>
+    </div>
+
+    <!-- NOTIFIKASI TOAST Sederhana -->
+    <div id="toast" class="toast hidden">Nomor berhasil disalin!</div>
+
+    <script src="script.js"></script>
+</body>
+</html>
